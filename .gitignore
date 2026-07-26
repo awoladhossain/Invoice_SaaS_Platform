@@ -1,0 +1,52 @@
+# Compiled output
+/dist
+/node_modules
+/build
+
+# Environment files (keep .env.example)
+.env
+.env.*.local
+.env.test
+.env.production
+!.env.example
+
+# Logs & Debug
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# System & OS
+.DS_Store
+Thumbs.db
+
+# Testing & Coverage
+/coverage
+/.nyc_output
+.jest/
+
+# Uploads & Temp Files
+/uploads
+/tmp
+.temp
+.tmp
+
+# IDEs & Editor Configuration
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+
+# AI / Agent Caches & Metadata (Local only)
+.agents/
+.claude/
+.windsurf/
+
+# Prisma & Database artifacts
+/generated/prisma
