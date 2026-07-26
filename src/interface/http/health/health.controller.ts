@@ -28,7 +28,9 @@ export class HealthController {
   check() {
     return this.health.check([
       // 1. Database Ping Check
-      () => this.prismaHealth.pingCheck('database', this.prisma),
+      () =>
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        this.prismaHealth.pingCheck('database', this.prisma as any),
       // 2. Memory Heap Check (Limit: 300MB)
       () => this.memory.checkHeap('memory_heap', 300 * 1024 * 1024),
       // 3. Resident Set Size (RSS) Memory Check (Limit: 500MB)
