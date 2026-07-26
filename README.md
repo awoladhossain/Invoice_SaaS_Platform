@@ -169,8 +169,8 @@ src/
 
 ### 1️⃣ Clone & Install
 ```bash
-git clone https://github.com/your-org/invoice-saas.git
-cd invoice-saas
+git clone https://github.com/awoladhossain/Invoice_SaaS_Platform.git
+cd Invoice_SaaS_Platform
 npm install
 ```
 

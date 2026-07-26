@@ -51,7 +51,9 @@ async function bootstrap() {
   // 9. OpenAPI / Swagger Documentation
   const config = new DocumentBuilder()
     .setTitle('Multi-Tenant Invoice SaaS API')
-    .setDescription('Production REST API documentation for Invoice SaaS platform')
+    .setDescription(
+      'Production REST API documentation for Invoice SaaS platform',
+    )
     .setVersion('1.0')
     .addBearerAuth()
     .addCookieAuth('refreshToken')
@@ -61,8 +63,14 @@ async function bootstrap() {
 
   const port = process.env.PORT ?? 3000;
   await app.listen(port);
-  app.get(Logger).log(`Application is running on: http://localhost:${port}/api/v1`);
-  app.get(Logger).log(`Swagger documentation available at: http://localhost:${port}/api/docs`);
+  app
+    .get(Logger)
+    .log(`Application is running on: http://localhost:${port}/api/v1`);
+  app
+    .get(Logger)
+    .log(
+      `Swagger documentation available at: http://localhost:${port}/api/docs`,
+    );
 }
 
 void bootstrap();
