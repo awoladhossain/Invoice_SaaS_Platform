@@ -22,15 +22,11 @@
     "strictBindCallApply": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@shared/*": [
-        "shared/*"
-      ],
-      "@config/*": [
-        "config/*"
-      ],
-      "@modules/*": [
-        "modules/*"
-      ]
+      "@domain/*": ["domain/*"],
+      "@application/*": ["application/*"],
+      "@infrastructure/*": ["infrastructure/*"],
+      "@interface/*": ["interface/*"],
+      "@shared/*": ["shared/*"]
     }
   }
 }
