@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { PrismaModule } from '@shared/infrastructure/prisma/prisma.module';
 import { LoggerModule } from 'nestjs-pino';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
@@ -14,7 +16,10 @@ import { AppService } from './app.service';
       envFilePath: ['.env', '.env.local'],
     }),
 
-    // 2. Global Rate Limiting (100 requests per minute)
+    // 2. Global Database Module (Prisma)
+    PrismaModule,
+
+    // 3. Global Rate Limiting (100 requests per minute)
     ThrottlerModule.forRoot([
       {
         ttl: 60000, // 60 seconds
@@ -22,7 +27,7 @@ import { AppService } from './app.service';
       },
     ]),
 
-    // 3. Structured Pino Logger
+    // 4. Structured Pino Logger
     LoggerModule.forRoot({
       pinoHttp: {
         level: process.env.NODE_ENV !== 'production' ? 'debug' : 'info',
@@ -32,6 +37,9 @@ import { AppService } from './app.service';
             : undefined,
       },
     }),
+
+    // 5. System Health Check Module
+    HealthModule,
   ],
   controllers: [AppController],
   providers: [
